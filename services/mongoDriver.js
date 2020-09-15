@@ -18,7 +18,10 @@ const mongo = new MongoClient.connect(url, {
 
 const insertLessons = function(lessons) {
 	return mongo.then(async (client) => {
-		await client.collection("lessons").drop();
+		await client
+			.collection("lessons")
+			.drop()
+			.catch((err) => console.error(`Fatal error occurred: ${err}`));
 
 		return client.collection("lessons").insertMany(lessons);
 	});
@@ -26,7 +29,10 @@ const insertLessons = function(lessons) {
 
 const insertFiles = function(files) {
 	return mongo.then(async (client) => {
-		await client.collection("files").drop();
+		await client
+			.collection("files")
+			.drop()
+			.catch((err) => console.error(`Fatal error occurred: ${err}`));
 
 		return client.collection("files").insertMany(files);
 	});
