@@ -11,8 +11,8 @@
 
 -   update()
 -   getFile(stgroup)
--   insertFavourite(id, stgroups)
--   removeFavourite(id, stgroups)
+-   removeFavourite(id, stgroup)
 -   getFavourites(id)
 -   getLessons(stgroup, group - not required, today - not required)
--   getStgroup(stgroup - not required)
+-   getStgroup(stgroup - not required
+-   getGroups(stgroup)

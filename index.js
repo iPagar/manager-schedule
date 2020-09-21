@@ -11,6 +11,7 @@ const {
 	getFavourites,
 	getLessons,
 	getStgroup,
+	getGroups,
 } = require("./services/mongoDriver");
 const rimraf = require("rimraf");
 
@@ -48,8 +49,8 @@ module.exports = {
 	update,
 	getFile,
 	insertFavourite,
-	removeFavourite,
 	getFavourites,
 	getLessons,
 	getStgroup,
+	getGroups,
 };
