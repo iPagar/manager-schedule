@@ -38,23 +38,20 @@ const insertFiles = function(files) {
 	});
 };
 
-const insertFavourite = function(id, stgroups) {
-	return mongo.then((client) => {
+const getGroups = function(stgroup) {
+	return mongo.then(async (client) => {
 		return client
-			.collection("favourites")
-			.updateOne(
-				{ id },
-				{ $addToSet: { stgroups: { $each: stgroups } } },
-				{ upsert: true }
-			);
+			.collection("lessons")
+			.distinct("group", { stgroup })
+			.catch((err) => console.error(`Fatal error occurred: ${err}`));
 	});
 };
 
-const removeFavourite = function(id, stgroups) {
+const insertFavourite = function(id, stgroup) {
 	return mongo.then((client) => {
 		return client
 			.collection("favourites")
-			.updateOne({ id }, { $pull: { stgroups: { $in: stgroups } } });
+			.updateOne({ id }, { $set: { stgroup } }, { upsert: true });
 	});
 };
 
@@ -236,8 +233,8 @@ module.exports = {
 	insertFiles,
 	getFile,
 	insertFavourite,
-	removeFavourite,
 	getFavourites,
 	getLessons,
 	getStgroup,
+	getGroups,
 };
