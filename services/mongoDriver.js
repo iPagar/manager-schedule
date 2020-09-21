@@ -40,8 +40,6 @@ const insertFiles = function(files) {
 
 const getGroups = function(stgroup) {
 	return mongo.then(async (client) => {
-<<<<<<< HEAD
-=======
 		return client
 			.collection("lessons")
 			.distinct("group", { stgroup })
@@ -51,7 +49,6 @@ const getGroups = function(stgroup) {
 
 const insertFavourite = function(id, stgroup) {
 	return mongo.then((client) => {
->>>>>>> 7e7dbd5dd23270fbde6d094833681ef80dbd37be
 		return client
 			.collection("lessons")
 			.distinct("group", { stgroup })
@@ -59,7 +56,6 @@ const insertFavourite = function(id, stgroup) {
 	});
 };
 
-<<<<<<< HEAD
 const insertFavourite = function(id, stgroup) {
 	return mongo.then((client) => {
 		return client
@@ -68,8 +64,6 @@ const insertFavourite = function(id, stgroup) {
 	});
 };
 
-=======
->>>>>>> 7e7dbd5dd23270fbde6d094833681ef80dbd37be
 const getFavourites = function(id) {
 	return mongo.then((client) =>
 		client
