@@ -47,28 +47,17 @@ const getGroups = function(stgroup) {
 	});
 };
 
-const insertFavourite = function(id, stgroup) {
-	return mongo.then((client) => {
-		return client
-			.collection("lessons")
-			.distinct("group", { stgroup })
-			.catch((err) => console.error(`Fatal error occurred: ${err}`));
-	});
-};
-
-const insertFavourite = function(id, stgroup) {
+const insertFavourite = function(id, stgroup, group) {
 	return mongo.then((client) => {
 		return client
 			.collection("favourites")
-			.updateOne({ id }, { $set: { stgroup } }, { upsert: true });
+			.updateOne({ id }, { $set: { stgroup, group } }, { upsert: true });
 	});
 };
 
 const getFavourites = function(id) {
 	return mongo.then((client) =>
-		client
-			.collection("favourites")
-			.findOne({ id }, { projection: { stgroups: 1 } })
+		client.collection("favourites").findOne({ id })
 	);
 };
 
