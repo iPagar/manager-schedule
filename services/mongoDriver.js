@@ -102,7 +102,7 @@ const getLessons = async function(
 			.find({
 				$and: [
 					{ stgroup: { $regex: stgroup } },
-					{ $or: [{ group }, { group: "" }] },
+					{ $or: [{ group }, { group: "Без подгруппы" }] },
 					{ repeat: "once" },
 					{ start_date: { $gte: today } },
 					{ start_date: { $lte: tomorrow } },
@@ -119,7 +119,7 @@ const getLessons = async function(
 					$match: {
 						$and: [
 							{ stgroup: { $regex: stgroup } },
-							{ $or: [{ group }, { group: "" }] },
+							{ $or: [{ group }, { group: "Без подгруппы" }] },
 							{ repeat: "к.н." },
 							{
 								$expr: {
@@ -179,7 +179,7 @@ const getLessons = async function(
 						$and: [
 							{ stgroup: { $regex: stgroup } },
 
-							{ $or: [{ group }, { group: "" }] },
+							{ $or: [{ group }, { group: "Без подгруппы" }] },
 							{ repeat: "ч.н." },
 							{
 								$expr: {
