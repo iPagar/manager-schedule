@@ -78,33 +78,40 @@ function parseFile(path) {
 	});
 }
 
-// parseFile("./schedules/ЭВМ-19-01 (ФИЛ).pdf").then((r) => {
-// 	console.log(r);
-// });
+fileToBuffer("./schedules/ЭВМ-19-01 (ФИЛ).pdf").then((r) => {
+	console.log(r);
+});
 
 function fileToBuffer(path) {
 	return new Promise((resolve, reject) => {
-		const stream = fs.createReadStream(path);
-		stream.setEncoding("binary");
+		// const stream = fs.createReadStream(path);
+		// stream.setEncoding("binary");
 
-		let data = "";
+		// let data = "";
 
-		stream.on("readable", function() {
-			let chunk = stream.read();
+		// stream.on("readable", function() {
+		// 	let chunk = stream.read();
 
-			if (chunk !== null) data += chunk;
-		});
+		// 	if (chunk !== null) data += chunk;
+		// });
 
-		stream.on("end", function() {
-			resolve(data);
-		});
+		// stream.on("end", function() {
+		// 	resolve(data);
+		// });
 
-		stream.on("error", function(err) {
-			if (err.code == "ENOENT") {
-				reject("Файл не найден");
-			} else {
-				reject(err);
-			}
+		// stream.on("error", function(err) {
+		// 	if (err.code == "ENOENT") {
+		// 		reject("Файл не найден");
+		// 	} else {
+		// 		reject(err);
+		// 	}
+		// });
+
+		fs.readFile(path, function(err, data) {
+			if (err) throw err;
+
+			// console.log(data.toString("base64"));
+			resolve(data.toString("base64"));
 		});
 	});
 }
