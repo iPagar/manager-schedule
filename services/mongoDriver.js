@@ -81,7 +81,7 @@ const getStgroup = function(stgroup = "") {
 
 const getLessons = async function(
 	stgroup,
-	group = "",
+	group = "Без подгруппы",
 	today = new Date(
 		new Date(Date.now()).getFullYear(),
 		new Date(Date.now()).getMonth(),
@@ -101,7 +101,7 @@ const getLessons = async function(
 			.collection("lessons")
 			.find({
 				$and: [
-					{ stgroup: { $regex: stgroup } },
+					{ stgroup },
 					{ $or: [{ group }, { group: "Без подгруппы" }] },
 					{ repeat: "once" },
 					{ start_date: { $gte: today } },
@@ -118,7 +118,7 @@ const getLessons = async function(
 				{
 					$match: {
 						$and: [
-							{ stgroup: { $regex: stgroup } },
+							{ stgroup },
 							{ $or: [{ group }, { group: "Без подгруппы" }] },
 							{ repeat: "к.н." },
 							{
@@ -177,8 +177,7 @@ const getLessons = async function(
 				{
 					$match: {
 						$and: [
-							{ stgroup: { $regex: stgroup } },
-
+							{ stgroup },
 							{ $or: [{ group }, { group: "Без подгруппы" }] },
 							{ repeat: "ч.н." },
 							{
