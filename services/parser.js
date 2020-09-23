@@ -46,18 +46,20 @@ function parseFile(path) {
 					const startDate = new Date(
 						new Date(Date.now()).getFullYear(),
 						start_date.match(/\d{2}$/) - 1,
-						start_date.match(/^\d{2}/),
-						start_time.slice(0, 2),
-						start_time.slice(3)
+						start_date.match(/^\d{2}/)[0],
+						start_time.match(/^\d{1,2}/)[0],
+						start_time.match(/\d{1,2}$/)[0]
 					);
 
 					const endDate = new Date(
 						new Date(Date.now()).getFullYear(),
 						end_date.match(/\d{2}$/) - 1,
-						end_date.match(/^\d{2}/),
-						start_time.slice(0, 2),
-						start_time.slice(3)
+						end_date.match(/^\d{2}/)[0],
+						start_time.match(/^\d{1,2}/)[0],
+						start_time.match(/\d{1,2}$/)[0]
 					);
+
+					console.log(lesson, startDate.toString());
 
 					return {
 						stgroup,
@@ -78,8 +80,8 @@ function parseFile(path) {
 	});
 }
 
-// fileToBuffer("./schedules/ЭВМ-19-01 (ФИЛ).pdf").then((r) => {
-// 	console.log(r);
+// parseFile("./schedules/АДБ-18-10.pdf").then((r) => {
+// console.log(r);
 // });
 
 function fileToBuffer(path) {
