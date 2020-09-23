@@ -22,8 +22,8 @@ function parseFile(path) {
 						new Date(Date.now()).getFullYear(),
 						date.match(/\d{2}$/) - 1,
 						date.match(/^\d{2}/),
-						start_time.slice(0, 2),
-						start_time.slice(3)
+						start_time.match(/^\d{1,2}/)[0],
+						start_time.match(/\d{1,2}$/)[0]
 					);
 
 					return {
@@ -59,7 +59,7 @@ function parseFile(path) {
 						start_time.match(/\d{1,2}$/)[0]
 					);
 
-					console.log(lesson, startDate.toString());
+					// console.log(lesson, startDate.toString());
 
 					return {
 						stgroup,
