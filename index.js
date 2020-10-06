@@ -17,8 +17,8 @@ const rimraf = require("rimraf");
 
 const dir = `./schedules`;
 
-function update() {
-	return moodle(dir)
+function update(courseExp, folderExp) {
+	return moodle(dir, courseExp, folderExp)
 		.then(async (files) => {
 			const promises = files.map((filename) =>
 				parser(`${dir}/${filename}`)

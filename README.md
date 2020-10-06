@@ -9,7 +9,7 @@
 
 ##### Функции
 
--   update()
+-   update(courseExp, folderExp)
 -   getFile(stgroup)
 -   removeFavourite(id, stgroup)
 -   getFavourites(id)

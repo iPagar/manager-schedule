@@ -11,7 +11,7 @@ const moodle_client = require("moodle-client").init({
 });
 
 //получить инфо о файлах с сервера
-function getSchedulesData() {
+function getSchedulesData(courseExp, folderExp) {
 	return moodle_client.then((client) =>
 		client
 			.call({
@@ -27,12 +27,18 @@ function getSchedulesData() {
 						const filesData = course.modules
 							.filter((module) => module.modname === "folder")
 							.reduce((folders, folder) => {
-								folders.push(
-									folder.contents.map((file) => ({
-										filename: file.filename,
-										fileurl: file.fileurl,
-									}))
-								);
+								if (
+									courseExp &&
+									courseExp.test(course.name) &&
+									folderExp &&
+									folderExp.test(folder.name)
+								)
+									folders.push(
+										folder.contents.map((file) => ({
+											filename: file.filename,
+											fileurl: file.fileurl,
+										}))
+									);
 
 								return folders;
 							}, [])
@@ -65,7 +71,7 @@ function downloadFile(dir, data, token) {
 }
 
 //скачать файлы
-function manageData(dir) {
+function manageData(dir, courseExp, folderExp) {
 	if (dir) {
 		if (!fs.existsSync(dir)) {
 			fs.mkdirSync(dir);
@@ -74,7 +80,7 @@ function manageData(dir) {
 		rimraf.sync(`${dir}/*`);
 
 		return moodle_client.then((client) =>
-			getSchedulesData().map((data) =>
+			getSchedulesData(courseExp, folderExp).map((data) =>
 				downloadFile(dir, data, client.token)
 			)
 		);

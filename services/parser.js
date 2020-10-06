@@ -80,8 +80,8 @@ function parseFile(path) {
 	});
 }
 
-// parseFile("./schedules/АДБ-18-10.pdf").then((r) => {
-// console.log(r);
+// parseFile("./schedules/МДС-20-01.pdf").then((r) => {
+// 	console.log(r);
 // });
 
 function fileToBuffer(path) {
