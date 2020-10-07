@@ -27,6 +27,20 @@ const insertLessons = function(lessons) {
 	});
 };
 
+const drop = function() {
+	return mongo.then(async (client) => {
+		await client
+			.collection("lessons")
+			.drop()
+			.catch((err) => console.error(`Fatal error occurred: ${err}`));
+
+		await client
+			.collection("files")
+			.drop()
+			.catch((err) => console.error(`Fatal error occurred: ${err}`));
+	});
+};
+
 const insertFiles = function(files) {
 	return mongo.then(async (client) => {
 		await client
@@ -226,6 +240,7 @@ const getLessons = async function(
 };
 
 module.exports = {
+	drop,
 	insertLessons,
 	insertFiles,
 	getFile,

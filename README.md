@@ -9,6 +9,7 @@
 
 ##### Функции
 
+-   drop()
 -   update(courseExp, folderExp)
 -   getFile(stgroup)
 -   removeFavourite(id, stgroup)
