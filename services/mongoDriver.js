@@ -18,10 +18,6 @@ const mongo = new MongoClient.connect(url, {
 
 const insertLessons = function(lessons) {
 	return mongo.then(async (client) => {
-		await client
-			.collection("lessons")
-			.catch((err) => console.error(`Fatal error occurred: ${err}`));
-
 		return client.collection("lessons").insertMany(lessons);
 	});
 };
@@ -42,10 +38,6 @@ const drop = function() {
 
 const insertFiles = function(files) {
 	return mongo.then(async (client) => {
-		await client
-			.collection("files")
-			.catch((err) => console.error(`Fatal error occurred: ${err}`));
-
 		return client.collection("files").insertMany(files);
 	});
 };

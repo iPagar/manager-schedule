@@ -42,7 +42,6 @@ function update(courseExp, folderExp) {
 			await insertFiles(resp.pdfs);
 			return insertLessons(resp.lessons);
 		})
-		.then(() => rimraf.sync(dir))
 		.catch((e) => console.log(e));
 }
 
