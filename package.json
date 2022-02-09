@@ -1,22 +1,22 @@
 {
-	"name": "manager-schedule",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"start": "node index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"dotenv": "^8.2.0",
-		"mongodb": "^3.6.2",
-		"moodle-client": "^0.5.2",
-		"rector-schedule-parser": "github:iPagar/rector-schedule-parser",
-		"rimraf": "^3.0.2"
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.4"
-	}
+  "name": "manager-schedule",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.6.2",
+    "moodle-client": "^0.5.2",
+    "rector-schedule-parser": "github:iPagar/rector-schedule-parser#feature",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
