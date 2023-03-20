@@ -43,8 +43,6 @@ function update(courseExp, folderExp) {
     .catch((e) => console.log(e));
 }
 
-update(new RegExp(/Бакалавриат/), new RegExp(/курс/), new RegExp(/426732/));
-
 module.exports = {
   drop,
   update,
