@@ -14,6 +14,8 @@ const mongo = new MongoClient.connect(url, {
   const db = client.db(dbName);
 
   return db;
+}).catch((e) => {
+    console.log(e);
 });
 
 const insertLessons = function (lessons) {
